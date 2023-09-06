@@ -91,8 +91,8 @@ def display_word_details(text, most_used=True, num_words=200):
 
 
 def main():
-    st.title("PDF to Word Cloud Generator")
-    st.write("Upload a PDF file, and I'll generate a word cloud and display word details from its content.")
+    st.title("PDF to Word-Cloud Generator")
+    st.write("Upload a PDF file, and I'll generate a word-cloud and display word details from its content.")
 
     # Upload PDF file
     uploaded_file = st.file_uploader("Choose a PDF file", type=["pdf"])
@@ -114,7 +114,7 @@ def main():
         most_used = display_most_used == "Most Used Words"
 
         # Display word cloud with color theme option and custom font
-        st.write(f"Word Cloud of the {display_most_used} from the PDF:")
+        st.write(f"Word-Cloud of the {display_most_used} from the PDF:")
         
         if custom_font:
             custom_font_name = custom_font.name  # Get the uploaded font file name
@@ -127,24 +127,24 @@ def main():
             try:
                 generate_word_cloud(pdf_text, num_words=200, color_theme=color_theme, most_used=most_used, custom_font=custom_font_path)
             except Exception as e:
-                st.error(f"An error occurred while generating the Word Cloud: {str(e)}")
+                st.error(f"An error occurred while generating the Word-Cloud: {str(e)}")
         else:
             generate_word_cloud(pdf_text, num_words=200, color_theme=color_theme, most_used=most_used)
 
         # Display word details in a table
         display_word_details(pdf_text, most_used=most_used, num_words=200)
-        
+    
     # Write linkedin and other credentials on the sidebar footer
     # Include sidebar with credentials
     with st.sidebar:
         # st.markdown('Chat With DIDX.net (V 0.1)')
         st.markdown("""
-                    #### PDF to Word Cloud Generator (V 1.5) 
+                    #### PDF to Word-Cloud Generator (V 1.5) 
                     #### Let's connect: [Kamran Feroz](https://www.linkedin.com/in/kamranferoz/)
                     """)
     st.markdown(
         "<style>#MainMenu{visibility:hidden;}</style>",
         unsafe_allow_html=True)        
-        
+    
 if __name__ == "__main__":
     main()
