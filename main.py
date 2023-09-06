@@ -131,20 +131,20 @@ def main():
         else:
             generate_word_cloud(pdf_text, num_words=200, color_theme=color_theme, most_used=most_used)
 
-        # Display word details in a table
-        display_word_details(pdf_text, most_used=most_used, num_words=200)
-        
-        # Write linkedin and other credentials on the sidebar footer
-        # Include sidebar with credentials
-        with st.sidebar:
-            # st.markdown('Chat With DIDX.net (V 0.1)')
-            st.markdown("""
-                        #### PDF to Word Cloud Generator (V 1.5) 
-                        #### Let's connect: [Kamran Feroz](https://www.linkedin.com/in/kamranferoz/)
-                        """)
-        st.markdown(
-            "<style>#MainMenu{visibility:hidden;}</style>",
-            unsafe_allow_html=True)        
+    # Display word details in a table
+    display_word_details(pdf_text, most_used=most_used, num_words=200)
+    
+    # Write linkedin and other credentials on the sidebar footer
+    # Include sidebar with credentials
+    with st.sidebar:
+        # st.markdown('Chat With DIDX.net (V 0.1)')
+        st.markdown("""
+                    #### PDF to Word Cloud Generator (V 1.5) 
+                    #### Let's connect: [Kamran Feroz](https://www.linkedin.com/in/kamranferoz/)
+                    """)
+    st.markdown(
+        "<style>#MainMenu{visibility:hidden;}</style>",
+        unsafe_allow_html=True)        
         
 if __name__ == "__main__":
     main()
