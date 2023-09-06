@@ -15,7 +15,10 @@ def extract_text_from_pdf(pdf_file):
 
 # Function to generate and display the word cloud
 def generate_word_cloud(text):
-    wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+    # Specify a path to a system font (change this path to a font file on your system)
+    custom_font_path = "font.ttf"  # Replace with the path to your font file
+    
+    wordcloud = WordCloud(width=800, height=400, background_color='white', font_path=custom_font_path).generate(text)
     st.image(wordcloud.to_image(), use_column_width=True)
     plt.close()  # Close the Matplotlib figure
 
