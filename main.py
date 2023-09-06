@@ -2,6 +2,8 @@ import streamlit as st
 from PyPDF2 import PdfReader
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
+from collections import Counter
+import pandas as pd
 
 # Function to extract text from a PDF file
 def extract_text_from_pdf(pdf_file):
@@ -17,6 +19,21 @@ def generate_word_cloud(text):
     st.image(wordcloud.to_image(), use_column_width=True)
     plt.close()  # Close the Matplotlib figure
 
+# Function to display word details in a table
+def display_word_details(text):
+    word_list = text.split()
+    word_counter = Counter(word_list)
+    
+    data = {'Word': [], 'Frequency': []}
+    for word, freq in word_counter.items():
+        data['Word'].append(word)
+        data['Frequency'].append(freq)
+
+    df = pd.DataFrame(data)
+    
+    st.subheader("Details of Words")
+    st.write(df)
+        
 def main():
     st.title("PDF to Word Cloud Generator")
     st.write("Upload a PDF file, and I'll generate a word cloud from its content.")
@@ -31,6 +48,9 @@ def main():
         # Display word cloud
         st.write("Word Cloud generated from the PDF:")
         generate_word_cloud(pdf_text)
+        
+        # Display word details
+        display_word_details(pdf_text)
 
     # Write linkedin and other credentials on the sidebar footer
     # Include sidebar with credentials
